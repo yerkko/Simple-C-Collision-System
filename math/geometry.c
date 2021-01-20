@@ -1,10 +1,3 @@
-/**
- * HERE BE DRAGONS
- * No intentes entender este código
- * Leelo bajo tu propio riesgo
- * Para más información, visita https://www.youtube.com/watch?v=siwpn14IE7E
- */
-
 #include "./geometry.h"
 #include <math.h>
 
@@ -16,25 +9,25 @@ static bool geometry_point_in_circle(Vector pos_c, double radius_c, Vector point
   return r_sqr >= dist_sqr;
 }
 
-// // TODO: REMOVE UNUSED
-// static bool geometry_point_in_rectangle(Vector point, Vector rect_1, Vector rect_2) {
-//   return (point.x >= rect_1.x && point.x <= rect_2.x) &&
-//          (point.y >= rect_1.y && point.y <= rect_2.y);
-// }
+
+static bool geometry_point_in_rectangle(Vector point, Vector rect_1, Vector rect_2) {
+   return (point.x >= rect_1.x && point.x <= rect_2.x) &&
+          (point.y >= rect_1.y && point.y <= rect_2.y);
+ }
 
 static double clamp(double d, double min, double max) {
   const double t = d < min ? min : d;
   return t > max ? max : t;
 }
 
-// // TODO: REMOVE UNUSED
-// static bool geometry_circle_coll(Vector pos_a, double radius_a, Vector pos_b,
-//                       double radius_b) {
-//   double dist_sqr = pow(pos_a.x - pos_b.x, 2) + pow(pos_a.y - pos_b.y, 2);
-//   double rad_sum_sqr = pow(radius_a + radius_b, 2);
 
-//   return dist_sqr <= rad_sum_sqr;
-// }
+ static bool geometry_circle_coll(Vector pos_a, double radius_a, Vector pos_b,
+                       double radius_b) {
+   double dist_sqr = pow(pos_a.x - pos_b.x, 2) + pow(pos_a.y - pos_b.y, 2);
+   double rad_sum_sqr = pow(radius_a + radius_b, 2);
+
+   return dist_sqr <= rad_sum_sqr;
+ }
 
 // Don't mess with cross product gang.
 static bool geometry_vect_are_parallel(Vector v1, Vector v2) {
